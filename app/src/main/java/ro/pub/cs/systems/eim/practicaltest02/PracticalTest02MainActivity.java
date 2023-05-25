@@ -70,10 +70,12 @@ public class PracticalTest02MainActivity extends AppCompatActivity {
 
     private class RequestTask extends AsyncTask<String, Void, String> {
         @Override
+        // daca se fac 2 requesturi in timp de 10 secunde doar se afiseaza din cache
         protected String doInBackground(String... urls) {
             String response = "";
             try {
                 URL url = new URL(urls[0]);
+
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String line;
